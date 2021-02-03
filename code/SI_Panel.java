@@ -17,7 +17,7 @@ public class SI_Panel extends JPanel {
     private boolean og;
     private boolean wasOg;
     private double laserProbability;
-	StringBuilder sb;
+	private StringBuilder sb;
     private int playerLaserSpeed;
     private final int baseSpeed;
     private final int playerSpeed;
