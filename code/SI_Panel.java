@@ -57,7 +57,7 @@ public class SI_Panel extends JPanel {
         for (int i = 0; i < 5; i++) {
             for (int j = 0; j < 10; j++) {
                 aliens.add(new Alien(j*40, i*40, 20));
-            }
+            } 
         }
 //        for(Alien alien: aliens){
 //            System.out.println(alien.getY());
