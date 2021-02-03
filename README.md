@@ -13,12 +13,13 @@
 
 ## How to play:
 `git clone https://github.com/asboyer2/SpaceInvaders/tree/master/code`\
-`cd SpaceInvaders`\
-`cd play`\
+`cd SpaceInvaders\play`\
 `java Main`
 
 ## How to contribute
 - fork the repo
+- `cd SpaceInvaders\code`
+- edit `SI_panel.java`
 - submit a pull request
 
 ### What to do:
