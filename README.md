@@ -21,7 +21,7 @@
 - fork the repo
 - submit a pull request
 
-### To do
+### What to do:
 - Add player name
 - Keep track of high scores on file
 - Images for player and aliens
