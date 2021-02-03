@@ -1,7 +1,8 @@
 # SpaceInvaders
 
 ## Cheat Codes
-- `baller` (unlimited bullets and super speed)
+- `baller` (unlimited bullets and super speed) *high score is not counted if you use `baller`*
+- `stop` (stops the cheat mode)
 - `life` (adds an extra life)
 
 ## Commands
