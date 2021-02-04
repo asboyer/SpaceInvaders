@@ -31,4 +31,4 @@
 *any help would be appreciated!*
 
 ## Images:
-<img src="https://github.com/asboyer2/email_report/blob/master/logos/main_logo_cropped.png?raw=true"/>
+<img src="https://github.com/asboyer2/SpaceInvaders/blob/master/images/sample_image_1.png"/>
