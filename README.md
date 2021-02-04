@@ -21,7 +21,7 @@
 - `git clone https://github.com/asboyer2/SpaceInvaders/tree/master/code`
 ### Two ways:
 - double click on the `game.jar`
--```java -jar game.jar```
+- ```java -jar game.jar```
 
 ## How to contribute
 - fork the repo
