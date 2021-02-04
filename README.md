@@ -13,9 +13,8 @@
 - `new` (goes back to normal cooldown, less points)
 
 ## How to play:
-`git clone https://github.com/asboyer2/SpaceInvaders/tree/master/code`\
-`cd SpaceInvaders\play`\
-`java Main`
+- `git clone https://github.com/asboyer2/SpaceInvaders/tree/master/code`\
+- double click on the `game.jar`\
 
 ## How to contribute
 - fork the repo
