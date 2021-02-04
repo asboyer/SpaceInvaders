@@ -29,3 +29,6 @@
 - Images for player and aliens
 
 *any help would be appreciated!*
+
+## Images:
+<img src="https://github.com/asboyer2/email_report/blob/master/logos/main_logo_cropped.png?raw=true"/>
