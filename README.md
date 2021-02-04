@@ -1,5 +1,10 @@
 # SpaceInvaders
 
+## Introduction
+- This is a variation of a project in my AP Computer Science Class
+- Inspiration taken from the retro *Space Invaders* game
+- Any instructions in `here` means that the commands should be typed in a terminal or command line
+
 ## Cheat Codes
 - `baller` (unlimited bullets and super speed) *high score is not counted if you use `baller`*
 - `stop` (stops the cheat mode)
@@ -13,10 +18,10 @@
 - `new` (goes back to normal cooldown, less points)
 
 ## How to play:
-- `git clone https://github.com/asboyer2/SpaceInvaders/tree/master/code`\
+- `git clone https://github.com/asboyer2/SpaceInvaders/tree/master/code`
 ### Two ways:
 - double click on the `game.jar`
-- java -jar game.jar
+-`java -jar game.jar`
 
 ## How to contribute
 - fork the repo
