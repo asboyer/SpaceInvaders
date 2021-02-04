@@ -1,4 +1,4 @@
-# SpaceInvaders
+# Space Invaders
 
 ## Introduction
 - This is a variation of a project in my AP Computer Science Class
