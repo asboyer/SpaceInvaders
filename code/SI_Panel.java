@@ -1,14 +1,10 @@
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.io.File;
 import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.Scanner;
-import java.applet.Applet;
-import java.applet.AudioClip;
 
 public class SI_Panel extends JPanel {
 
@@ -21,7 +17,7 @@ public class SI_Panel extends JPanel {
     private boolean og;
     private boolean wasOg;
     private double laserProbability;
-	StringBuilder sb;
+	private StringBuilder sb;
     private int playerLaserSpeed;
     private final int baseSpeed;
     private final int playerSpeed;
@@ -40,23 +36,8 @@ public class SI_Panel extends JPanel {
     private int times;
     private int laserDelay, laserCounter; //delay -> frames between shots, counter counts frames
     private int score, lives;
-    private Image easy, death;
-    private ArrayList<Image[]> alienImages; //{[11, 12], [21, 22], [}
-    public SI_Panel(int width, int height) {
-        alienImages = new ArrayList<>();
-        try {
-            easy = ImageIO.read(new File("../res/easy.jpg"));
-            death = ImageIO.read(new File("../res/death.png"));
-        }catch (Exception e){e.printStackTrace();}
-        for (int i = 1; i < 4; i++) {
-            try {
-                Image[] pair = new Image[2];
-                pair[0] = ImageIO.read(new File("../res/"+i+"0.png"));
-                pair[1] = ImageIO.read(new File("../res/"+i+"1.png"));
-                alienImages.add(pair);
-            }catch (Exception e){e.printStackTrace();}
 
-        }
+    public SI_Panel(int width, int height) {
 
         setBounds(0,0,width, height);
         playerSpeed = 5;
@@ -65,22 +46,18 @@ public class SI_Panel extends JPanel {
         setupKeyListener();
         timer = new Timer(1000/100, e->update());
         timer.start();
-
     }
-
 
     public void restart(){
         System.out.println("\n--- NEW GAME ---\n");
-        Sounds.mode.stop();
-        Sounds.theme.loop();
         // Scanner input = new Scanner(System.in);
         // System.out.println("Player name: ");
         // String name = input.next();
         aliens = new ArrayList<>();
         for (int i = 0; i < 5; i++) {
             for (int j = 0; j < 10; j++) {
-                aliens.add(new Alien(j*40, i*40, 20, alienImages.get((2 * i)%3)));
-            }
+                aliens.add(new Alien(j*40, i*40, 20));
+            } 
         }
 //        for(Alien alien: aliens){
 //            System.out.println(alien.getY());
@@ -111,13 +88,12 @@ public class SI_Panel extends JPanel {
         score = 0;
     }
     public void nextLevel(){
-        for (int i = 0; i < 6; i++) {
+        for (int i = 0; i < 5; i++) {
             for (int j = 0; j < 10; j++) {
-                aliens.add(new Alien(j*40, i*40, 20, alienImages.get((2 * i)%3))); //20?
+                aliens.add(new Alien(j*40, i*40, 20));
             }
         }
         level ++;
-        lives ++;
         alienVx = 2;
         alienLasers = new ArrayList<>();
         boolean hitEdge = false;
@@ -142,7 +118,6 @@ public class SI_Panel extends JPanel {
                 z ++;
                 System.out.println("GAME OVER!");
                 System.out.println("Score: " + score);
-                Sounds.theme.stop();
                 lose = true;
                 }
             }
@@ -266,16 +241,12 @@ public class SI_Panel extends JPanel {
                     System.out.println("Hard mode: double the points!");
                     laserProbability = 0.2;
                     hard = true;
-                    Sounds.mode.loop();
-                    Sounds.theme.stop();
                     f ++;
                 }
                 else if(sb.toString().contains("norm") && f == 2){
                     System.out.println("Ahhh, back to normal!");
                     laserProbability = 0.03;
                     hard = false;
-                    Sounds.theme.loop();
-                    Sounds.mode.stop();
                     f --;
                 }
                 else if(sb.toString().contains("game")){
@@ -319,19 +290,15 @@ public class SI_Panel extends JPanel {
                      //TODO: test this, add power up
                     if(powerUp) {
                         playerLasers.add(laser);
-                        Sounds.shoot.play();
                     }
                     else{
                         if(og) {
                             if(playerLasers.size() < 1)
                                 playerLasers.add(laser);
-                                Sounds.shoot.play();
-
                         }
                         else{
                             if(laserCounter >= laserDelay){
                                 playerLasers.add(laser);
-                                Sounds.shoot.play();
                                 laserCounter = 0;
                             }
                         }
@@ -353,21 +320,14 @@ public class SI_Panel extends JPanel {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        // TODO: set background image??
-        g.drawImage(easy, 0, 0, null);
-
-        setBackground(Color.BLACK);
         Graphics2D g2 = (Graphics2D) g;
         g2.setColor(Color.black);
-        if(hard) {
+        if(hard)
             g2.setColor(Color.ORANGE);
-            g2.drawImage(death, 0, 0, null);
-        }
         for(Alien alien: aliens){
             alien.draw(g2);
         }
-        g2.setColor(Color.GREEN);
-//        g2.setColor(new Color(61,131,66));
+        g2.setColor(new Color(61,131,66));
         for(Laser laser: playerLasers){
             laser.draw(g2);
         }
@@ -385,31 +345,16 @@ public class SI_Panel extends JPanel {
         else if(lives == 1){
             g2.setColor(new Color( 255,93,93));
         }
-        //if (powerUp)
-          //  g2.setColor(Color.BLUE);
+        if (powerUp)
+            g2.setColor(Color.BLUE);
         if(lives == 0)
             g2.setColor(Color.RED);
         player.draw(g2);
-        g2.setColor(Color.WHITE);
+        g2.setColor(Color.black);
         // g2.drawString("High score: " + highScore + " (" + highScoreName + " )", 7, 10);
         g2.drawString("High score: " + highScore, 7, 10);
         g2.drawString("Score: " + score, 7, 25);
-        if(lives == 3){
-            g2.setColor(new Color(44,168,34));
-        }
-        else if(lives > 3)
-            g2.setColor(Color.CYAN);
-        else if(lives == 2){
-            g2.setColor(new Color(255,153,154));
-        }
-        else if(lives == 1){
-            g2.setColor(new Color( 255,93,93));
-        }
-        if(lives == 0)
-            g2.setColor(Color.RED);
-        //TODO: highlighting for the high score box
         g2.drawString("Lives: " + lives, 7, 40);
-        g2.setColor(Color.WHITE);
         g2.drawString("Wave: " + level, 7, 55);
         if(win){
             g2.drawString("YOU WIN", 400, 400);
@@ -417,7 +362,6 @@ public class SI_Panel extends JPanel {
         if(lose){
             g2.drawString("GAME OVER", 400, 400);
         }
-
 
     }
 
