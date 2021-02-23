@@ -1,12 +1,16 @@
+import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.event.KeyEvent;
+import java.io.File;
 import java.util.*;
+
 
 public class Player {
 
     private int x, y, width, height;
     private boolean moveLeft, moveRight;
     public int speed;
+    private Image image;
 
     public Player(int x, int y, int speed) {
         this.x = x;
@@ -16,11 +20,14 @@ public class Player {
         this.speed = 5;
         moveRight = false;
         moveLeft = false;
+        try{
+            image = ImageIO.read(new File("./res/Ship.png"));
+        }catch (Exception e){e.printStackTrace();}
     }
 
     public void draw(Graphics2D g2){
-        g2.fillRect(x, y, width, height);
-
+//        g2.fillRect(x, y, width, height);
+        g2.drawImage(image, x, y, null);
     }
 
     public void move(int screenWidth){

@@ -9,7 +9,7 @@ public class Laser {
         this.x = x;
         this.y = y;
         w = 4; //TODO adjust size?
-        h = 6;
+        h = 12;
         this.vy = vy;
     }
 
