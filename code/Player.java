@@ -21,7 +21,7 @@ public class Player {
         moveRight = false;
         moveLeft = false;
         try{
-            image = ImageIO.read(new File("./res/Ship.png"));
+            image = ImageIO.read(new File("../res/Ship.png"));
         }catch (Exception e){e.printStackTrace();}
     }
 

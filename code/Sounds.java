@@ -1,5 +1,4 @@
-import java.applet.Applet;
-import java.applet.AudioClip;
+import java.applet.*;
 
 public class Sounds {
     public static final AudioClip theme = Applet.newAudioClip(Sounds.class.getResource("music.wav"));

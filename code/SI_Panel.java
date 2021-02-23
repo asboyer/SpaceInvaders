@@ -9,11 +9,6 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.applet.Applet;
 import java.applet.AudioClip;
-import java.awt.*;
-
-import java.applet.*;
-
-import java.net.*;
 
 public class SI_Panel extends JPanel {
 
@@ -50,14 +45,14 @@ public class SI_Panel extends JPanel {
     public SI_Panel(int width, int height) {
         alienImages = new ArrayList<>();
         try {
-            easy = ImageIO.read(new File("./res/easy.jpg"));
-            death = ImageIO.read(new File("./res/death.png"));
+            easy = ImageIO.read(new File("../res/easy.jpg"));
+            death = ImageIO.read(new File("../res/death.png"));
         }catch (Exception e){e.printStackTrace();}
         for (int i = 1; i < 4; i++) {
             try {
                 Image[] pair = new Image[2];
-                pair[0] = ImageIO.read(new File("./res/"+i+"0.png"));
-                pair[1] = ImageIO.read(new File("./res/"+i+"1.png"));
+                pair[0] = ImageIO.read(new File("../res/"+i+"0.png"));
+                pair[1] = ImageIO.read(new File("../res/"+i+"1.png"));
                 alienImages.add(pair);
             }catch (Exception e){e.printStackTrace();}
 
