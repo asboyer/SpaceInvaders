@@ -1,4 +1,5 @@
-# Space Invaders
+# Space Invaders - V1
+***v1** means that there are no images in this version, just colored blocks*
 
 ## Introduction
 - This is a variation of a project in my AP Computer Science Class
